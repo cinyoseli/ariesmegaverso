@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/style.css">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div class="container">
+       
+            <!-- Botón para colapsar la barra en pantallas pequeñas -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Enlaces principales -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/compradores/productos">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contacto">Contacto</a>
+                    </li>
+                </ul>
+
+                <!-- Buscador -->
+                <form class="d-flex me-3" action="/buscar" method="GET">
+                    <input class="form-control form-control-sm me-2" type="search" name="q" placeholder="Buscar productos..." aria-label="Buscar">
+                    <button class="btn btn-outline-primary btn-sm" type="submit">Buscar</button>
+                </form>
+
+              
+
+                <!-- Opciones de usuario -->
+                <div class="d-flex align-items-center">
+                    <% if (!session.userId) { %>
+                        <a href="/registro" class="btn btn-outline-secondary btn-sm me-2">Crear Cuenta</a>
+                        <a href="/login" class="btn btn-outline-primary btn-sm me-2">Iniciar Sesión</a>
+                    <% } else { %>
+                        <a href="/logout" class="btn btn-outline-danger btn-sm me-2">Cerrar Sesión</a>
+                    <% } %>
+                    <a href="/compradores/carrito" class="btn btn-cart">
+                        <i class="bi bi-cart"></i> 
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <style>
+        /* Estilo del encabezado */
+        header {
+            background: url('/images/header-bg.jpg') no-repeat center center;
+            background-size: cover;
+            color: #3772ff;
+            height: 500px;
+            position: relative;
+        }
+
+        header .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Oscurece la imagen */
+        }
+
+        header .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Estilo de la sección "Sobre Nosotros" */
+        .about-section {
+            background-color: #a3c4f3; 
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Ajustes para el carrusel */
+        #carouselOfertas {
+            max-width: 600px; /* Ancho máximo del carrusel */
+            margin: 0 auto; /* Centra el carrusel */
+        }
+
+        #carouselOfertas img {
+            height: 200px; /* Imágenes más pequeñas */
+            object-fit: cover; /* Recorta las imágenes para que se ajusten al contenedor */
+        }
+
+        #carouselOfertas .carousel-caption h5 {
+            font-size: 1.5rem; /* Aumenta el tamaño del título */
+            font-weight: bold;
+        }
+
+        #carouselOfertas .carousel-caption p {
+            font-size: 1.2rem; /* Aumenta el tamaño del texto */
+        }
+
+        /* Estilo de la sección "Medios de Pago" */
+        .payment-section {
+            background-color: #050505; 
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .payment-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .payment-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .payment-section img {
+            max-width: 100px;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="overlay"></div>
+        <div class="container h-100 d-flex flex-column justify-content-center align-items-center">
+            <!-- Logo -->
+            <img src="/images/aries.png" alt="Logo de la tienda" class="img-fluid mb-3" style="max-width: 300px;">
+            <h1 class="text-center">⚡ Aries Megaverso ⚡</h1>
+          
+        
+    </header>
+
+    <!-- Sección "Sobre Nosotros" -->
+    <section class="about-section">
+        <h2>Sobre Nosotros</h2>
+        <p>
+            Somos una tienda dedicada a ofrecer productos únicos y de alta calidad. 
+            Nuestro objetivo es brindarte una experiencia de compra excepcional, 
+            con productos que se adapten a tus necesidades y gustos.
+        </p>
+    </section>
+
+    <!-- Barra deslizante de ofertas -->
+    <section class="mt-5">
+        <h2 class="text-center">Ofertas Especiales</h2>
+        <div id="carouselOfertas" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Producto 1 -->
+                <div class="carousel-item active">
+                    <img src="/images/oferta1.jpg" class="d-block w-100" alt="Peluche Capibara Rosa">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Peluche Capibara Rosa</h5>
+                        <p>¡20% de descuento! Ahora por solo $12,000.</p>
+                    </div>
+                </div>
+                <!-- Producto 2 -->
+                <div class="carousel-item">
+                    <img src="/images/oferta2.jpeg" class="d-block w-100" alt="Lampara Capibara">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Lampara Capibara</h5>
+                        <p>¡Envío gratis en compras mayores a $50,000!</p>
+                    </div>
+                </div>
+                <!-- Producto 3 -->
+                <div class="carousel-item">
+                    <img src="/images/oferta3.jpg" class="d-block w-100" alt="Llaveros Capibara">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Llaveros Capibara</h5>
+                        <p>¡Compra 2 y obtén un 10% de descuento!</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Controles del carrusel -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselOfertas" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselOfertas" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </section>
+    <section class="gallery-section">
+        <h2 class="text-center">Productos Destacados</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="/images/producto1.jpg" alt="Producto 1">
+                <p class="price">$10,000</p>
+            </div>
+            <div class="gallery-item">
+                <img src="/images/producto2.jpg" alt="Producto 2">
+                <p class="price">$15,000</p>
+            </div>
+            <div class="gallery-item">
+                <img src="/images/producto3.jpg" alt="Producto 3">
+                <p class="price">$20,000</p>
+            </div>
+            <div class="gallery-item">
+                <img src="/images/producto4.jpg" alt="Producto 4">
+                <p class="price">$25,000</p>
+            </div>
+            <div class="gallery-item">
+                <img src="/images/producto5.jpg" alt="Producto 5">
+                <p class="price">$30,000</p>
+            </div>
+            
+        </div>
+        <div class="text-center mt-4">
+            <a href="/compradores/productos" class="btn btn-primary">Ver Todos los Productos</a>
+        </div>
+    </section>
+    
+   
+    
+    <style>
+        /* Estilo de la galería */
+        .gallery-section {
+            background-color: #111111;
+            padding: 50px 20px;
+        }
+    
+        .gallery-section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+    
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px; /* Espacio entre las imágenes */
+        }
+    
+        .gallery-item {
+            flex: 1 1 calc(20% - 20px); /* Tamaño de cada imagen (20% del ancho del contenedor) */
+            max-width: 150px; /* Tamaño máximo del contenedor */
+            text-align: center;
+        }
+    
+        .gallery-item img {
+            width: 150px; /* Ancho fijo para todas las imágenes */
+            height: 150px; /* Altura fija para todas las imágenes */
+            object-fit: cover; /* Recorta la imagen para ajustarla al contenedor */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+        }
+    
+        .gallery-item .price {
+            margin-top: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+    
+    <!-- Ofertas destacadas -->
+    <main class="container mt-4">
+        <section class="mt-5">
+            <h2 class="text-center">Ofertas Destacadas</h2>
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <div class="alert alert-warning">
+                        <h4>¡20% de descuento en peluches!</h4>
+                        <p>Válido hasta el fin de mes.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="alert alert-info">
+                        <h4>¡Envío gratis en compras mayores a $50,000!</h4>
+                        <p>Aplica en todo el país.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Medios de pago -->
+        <section class="payment-section">
+            <h2>Medios de Pago</h2>
+            <p>Aceptamos todas las tarjetas y métodos de pago.</p>
+            <div class="d-flex justify-content-center">
+                <img src="/images/visa.jpg" alt="Visa" class="img-fluid">
+                <img src="/images/mastercard.png" alt="MasterCard" class="img-fluid">
+                <img src="/images/mercadopago.png" alt="MercadoPago" class="img-fluid">
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="bg-primary text-white text-center py-3">
+        <p>&copy; 2025 Nuestra Tienda. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

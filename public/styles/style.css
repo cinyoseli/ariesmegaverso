@@ -1,0 +1,190 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0f0f0f;
+    color: #333;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    
+}
+
+.productos {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 1rem;
+}
+
+.producto {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 1rem;
+    width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.producto h2 {
+    color: #007bff;
+}
+
+.precio {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #28a745;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0582ca;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+.producto img {
+    width: 100%; /* Ajusta la imagen al ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 10px; /* Bordes redondeados */
+    margin-bottom: 10px; /* Espacio debajo de la imagen */
+}
+header img {
+    max-width: 150px;
+    margin-bottom: 10px;
+}
+
+.card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+footer {
+    font-size: 0.9rem;
+ 
+
+}
+header img {
+    max-width: 150px;
+    margin-bottom: 10px;
+
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+    font-weight: bold;
+
+}
+
+.navbar-nav .nav-link:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    font-size: 1rem;
+
+}
+    .navbar .btn {
+        font-size: 0.85rem; /* Tamaño de fuente más pequeño */
+        padding: 0.25rem 0.5rem; /* Botones más compactos */
+      
+
+    }
+
+    .navbar .form-control {
+        max-width: 200px; /* Limita el ancho del buscador */
+    }
+    .navbar .form-control:focus {
+        box-shadow: none; /* Elimina el efecto de sombra al hacer foco */
+        border-color: #007bff; /* Cambia el color del borde al hacer foco */
+    }
+    .navbar .form-control::placeholder {
+        color: #6c757d; /* Color del texto del placeholder */
+        opacity: 1; /* Asegura que el placeholder sea completamente visible */
+    }
+    .btn-cart {
+        background-color: transparent; /* Fondo transparente */
+        border: none; /* Sin borde */
+        font-size: 1.2rem; /* Tamaño del ícono */
+        color: #28a745; /* Color verde */
+        padding: 0.25rem; /* Espaciado interno */
+        margin-left: 0.5rem; /* Separación del resto */
+        cursor: pointer; /* Cambia el cursor al pasar por encima */
+    }
+    
+    .btn-cart:hover {
+        color: #1e7e34; /* Cambia el color al pasar el mouse */
+        transform: scale(1.1); /* Efecto de agrandamiento */
+    }
+    
+    .btn-cart i {
+        vertical-align: middle; /* Alinea el ícono verticalmente */
+    }
+    .btn-cart:focus {
+        outline: none; /* Elimina el contorno al hacer foco */
+    }
+    .btn-cart:active {
+        transform: scale(0.9); /* Efecto de contracción al hacer clic */
+    }
+    .btn-cart:disabled {
+        color: #6c757d; /* Color gris para el botón deshabilitado */
+        cursor: not-allowed; /* Cambia el cursor al pasar por encima */
+    }
+    .btn-cart:disabled:hover {
+        color: #6c757d; /* Mantiene el color gris al pasar el mouse */
+        transform: none; /* Sin efecto de agrandamiento */
+    }
+    .btn-cart:disabled:active {
+        transform: none; /* Sin efecto de contracción al hacer clic */
+    }
+    .btn-cart:disabled:focus {
+        outline: none; /* Elimina el contorno al hacer foco */
+    }
+    .list-unstyled i {
+        font-size: 1.5rem;
+        margin-right: 10px;
+    }
+    
+    /* Estilo para el formulario */
+    form .form-control {
+        border-radius: 5px;
+    }
+    
+    form button {
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+    form .form-control:focus {
+        box-shadow: none; /* Elimina el efecto de sombra al hacer foco */
+        border-color: #007bff; /* Cambia el color del borde al hacer foco */
+    }
+    form .form-control::placeholder {
+        color: #6c757d; /* Color del texto del placeholder */
+        opacity: 1; /* Asegura que el placeholder sea completamente visible */
+    }
+    .form-group {
+        margin-bottom: 1rem; /* Espacio entre los campos del formulario */
+    }
+    .form-group label {
+        font-weight: bold; /* Negrita para las etiquetas */
+    }
+    .form-group input, .form-group textarea {
+        border-radius: 5px; /* Bordes redondeados para los campos de entrada */
+    }
+    .form-group input:focus, .form-group textarea:focus {
+        box-shadow: none; /* Elimina el efecto de sombra al hacer foco */
+        border-color: #007bff; /* Cambia el color del borde al hacer foco */
+    }
+    
